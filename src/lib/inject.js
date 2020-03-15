@@ -1,0 +1,25 @@
+export default {
+  // 向页面注入JS
+  injectCustomJs: function(jsPath) {
+    const temp = document.createElement('script')
+    temp.setAttribute('type', 'text/javascript')
+    // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
+    temp.src = chrome.extension.getURL(jsPath)
+    temp.onload = function() {
+      // 放在页面不好看，执行完后移除掉
+      this.parentNode.removeChild(this)
+    }
+    document.head.appendChild(temp)
+  },
+
+// 向页面注入CSS
+  injectCustomCss: function(cssPath) {
+    const temp = document.createElement('link')
+    temp.setAttribute('type', 'text/css')
+    temp.setAttribute('rel', 'stylesheet')
+    temp.href = chrome.extension.getURL(cssPath)
+
+    document.head.appendChild(temp)
+  },
+}
+

@@ -1,18 +1,21 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
+  <div class="body">
+    <p>{{ chrome.i18n.getMessage('underConstruction') }}<a target='blank' href='http://www.baidu.com'>linkerGitHub</a></p>
   </div>
 </template>
 
-<script>
+<script type="text/javascript" >
 export default {
   data() {
     return {
-      msg: 'Welcome!'
+      chrome
     }
   }
 }
 </script>
 
-<style lang="stylus">
+<style lang="less">
+  .body{
+    padding: 20px;
+  }
 </style>

@@ -7,5 +7,6 @@
 
 ## 细节
 1. 存储位置：chrome扩展localstorage
+2. 打包后大小：1.5MB
 
 ## 图样

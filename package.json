@@ -1,8 +1,8 @@
 {
   "author": {
-    "email": "mubaidr@gmail.com",
-    "name": "Muhammad Ubaid Raza",
-    "url": "https://mubaidr.github.io/"
+    "email": "linker-junhao@outlook.com",
+    "name": "linker junhao",
+    "url": "https://github.com/linkerGitHub"
   },
   "dependencies": {
     "bulma-fluent": "^0.3.20",
@@ -11,7 +11,7 @@
     "vue": "^2.6.11",
     "marked": "^0.8.0"
   },
-  "description": "vue-chrome-extension-boilerplate",
+  "description": "一个web页面快速侧边栏笔记chrome插件，a side bar note for web page can be accessed quickly",
   "devDependencies": {
     "@babel/core": "^7.8.6",
     "@babel/preset-env": "^7.8.6",
@@ -52,11 +52,11 @@
     "webpack-cli": "^3.3.11",
     "webpack-extension-reloader": "^1.1.4"
   },
-  "license": "MIT",
-  "name": "vue-chrome-extension-boilerplate",
+  "license": "Apache License 2.0",
+  "name": "web-note-quickly",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mubaidr/vue-chrome-extension-boilerplate.git"
+    "url": "https://github.com/linkerGitHub/web_note_quickly.git"
   },
   "scripts": {
     "build": "npm run pack && npm run remove-evals && npm run zip",

@@ -37,7 +37,7 @@
         <div v-html="compiledMarkdown"/>
       </div>
     </el-card>
-    <div style="text-align: left; padding: 6px 0;">
+    <div style="text-align: center; padding: 6px 0;">
       <el-button
         class="editor-btn"
         @click="toggleEditor()"
@@ -52,7 +52,7 @@
       >
         <i class="el-icon-check"/>
       </el-button>
-      <el-button class="editor-btn" icon="el-icon-question"></el-button>
+<!--      <el-button class="editor-btn" icon="el-icon-question"></el-button>-->
     </div>
     <div class="note-list">
       <note-block
@@ -230,11 +230,10 @@
     z-index: 65500;
     box-shadow: 0 0 4px grey;
     padding: 4px;
-
   }
 
   .editor-btn {
-    width: 60px;
+    width: 100px;
     display: inline;
   }
 

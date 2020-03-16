@@ -27,6 +27,7 @@
         :autosize="{ minRows: 4}"
         :placeholder="chrome.i18n.getMessage('noteInputPlaceholder')"
       />
+      <el-button class="full-screen-btn" size="mini" @click="fullScreenEdit" icon="el-icon-full-screen"></el-button>
     </div>
     <el-card
       v-show="noteEdit.length > 0"
@@ -36,7 +37,7 @@
         <div v-html="compiledMarkdown"/>
       </div>
     </el-card>
-    <div style="text-align: center; padding: 6px">
+    <div style="text-align: left; padding: 6px 0;">
       <el-button
         class="editor-btn"
         @click="toggleEditor()"
@@ -51,7 +52,7 @@
       >
         <i class="el-icon-check"/>
       </el-button>
-      <el-button @click="fullScreenEdit" style="width: 18%" v-show="isEditorShow" icon="el-icon-full-screen"></el-button>
+      <el-button class="editor-btn" icon="el-icon-question"></el-button>
     </div>
     <div class="note-list">
       <note-block
@@ -109,6 +110,9 @@
       compiledMarkdown() {
         return marked(this.noteEdit)
       }
+    },
+    beforeMount() {
+
     },
     mounted() {
       this.getNote()
@@ -208,6 +212,10 @@
     @import (less) "~element-ui/lib/theme-chalk/input.css";
     @import (less) "~element-ui/lib/theme-chalk/card.css";
     @import (less) "markdownHtml.less";
+
+    .el-textarea__inner {
+      padding-bottom: 28px;
+    }
   }
 
   .extension-box {
@@ -226,7 +234,7 @@
   }
 
   .editor-btn {
-    width: 30%;
+    width: 60px;
     display: inline;
   }
 
@@ -242,9 +250,15 @@
   }
 
   .note-input-box {
+    .full-screen-btn {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
     height: auto;
     overflow: hidden;
     transition: max-height linear 0.3s;
+    position: relative;
   }
 
   .side-bar-expand {

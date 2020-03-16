@@ -8,11 +8,22 @@
       type="primary"
       size="medium"
       class="expand-side-bar-btn"
+      v-show="isExpand"
       circle
-      :style="{left: isExpand?'-18px':''}"
+      :style="{left: '-18px'}"
       @click="toggleSideBar()"
     >
-      <i :class="{'el-icon-edit': !isExpand, 'el-icon-arrow-right': isExpand}"/>
+      <i class="el-icon-arrow-right"/>
+    </el-button>
+    <el-button
+      type="primary"
+      size="medium"
+      class="expand-side-bar-btn"
+      v-show="!isExpand"
+      style="left: -40px;padding-left: 8px;"
+      @click="toggleSideBar()"
+    >
+      <i class="el-icon-edit"/>
     </el-button>
     <div
       class="note-input-box"
@@ -110,9 +121,6 @@
       compiledMarkdown() {
         return marked(this.noteEdit)
       }
-    },
-    beforeMount() {
-
     },
     mounted() {
       this.getNote()
@@ -268,8 +276,9 @@
     position: absolute;
     left: -36px;
     top: 70%;
+    z-index: 1;
   }
   .expand-side-bar-btn:hover {
-    transform: scale(1.6);
+    transform: scale(1.2);
   }
 </style>

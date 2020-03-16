@@ -26,6 +26,12 @@ function deleteNodeByUrlKeyFormTree(url, key, tree) {
   const urlSeg = trimUrlHttpPart(url).split("/")
   let tempTree = tree
   tempTree[urlSeg[0]].count-=1
+  if(tempTree[urlSeg[0]].count === 0) {
+    chrome.storage.local.remove(urlSeg[0])
+    delete tempTree[urlSeg[0]]
+    return tempTree
+  }
+
   tempTree = tempTree[urlSeg[0]]
 
   for (let i = 1; i < urlSeg.length; i+=1) {
@@ -38,7 +44,7 @@ function deleteNodeByUrlKeyFormTree(url, key, tree) {
     tempTree = tempTree.children[value]
   }
   delete tempTree.notes[key]
-  return tempTree
+  return tree
 }
 
 function mergeLinkToUrlTree(url, note, tree) {

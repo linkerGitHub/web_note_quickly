@@ -14,3 +14,15 @@
 
 ## license
 Apache 2.0
+
+## run
+```shell script
+# development mode
+npm run dev
+# build(production) mode
+npm run build
+# pack to zip
+npm run zip
+```
+you can checkout the `scripts` block of `package.json` for more detail
+

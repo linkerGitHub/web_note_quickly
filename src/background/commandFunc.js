@@ -140,7 +140,6 @@ export default {
       getSiteStorageByUrl(note.url).then((item) => {
         deleteNodeByUrlKeyFormTree(note.url, note.key, item)
         chrome.storage.local.set(item, () => {
-          console.log(item)
           resolve({code: 1, msg: 'ok'})
         })
       })

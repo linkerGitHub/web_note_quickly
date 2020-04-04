@@ -1,6 +1,6 @@
 export default {
   // 向页面注入JS
-  injectCustomJs: function(jsPath) {
+  injectCustomJs(jsPath) {
     const temp = document.createElement('script')
     temp.setAttribute('type', 'text/javascript')
     // 获得的地址类似：chrome-extension://ihcokhadfjfchaeagdoclpnjdiokfakg/js/inject.js
@@ -12,8 +12,8 @@ export default {
     document.head.appendChild(temp)
   },
 
-// 向页面注入CSS
-  injectCustomCss: function(cssPath) {
+  // 向页面注入CSS
+  injectCustomCss(cssPath) {
     const temp = document.createElement('link')
     temp.setAttribute('type', 'text/css')
     temp.setAttribute('rel', 'stylesheet')

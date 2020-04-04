@@ -1,87 +1,109 @@
 <template>
-  <div class="card-box" :class="{'in-viewport': isInViewport, 'not-in-viewport': !isInViewport}">
-    <div class="card-box-back" :style="highlightWidth"></div>
+  <div
+    class="card-box"
+    :class="{'in-viewport': isInViewport, 'not-in-viewport': !isInViewport}"
+  >
+    <div
+      class="card-box-back"
+      :style="highlightWidth"
+    />
     <el-card>
       <div class="op-col">
-        <el-button type="warning" icon="el-icon-delete" size="mini" circle @click="deleteNote()"></el-button>
-        <el-button icon="el-icon-d-caret" size="mini" circle @click="jumpToNoteThere()"></el-button>
+        <el-button
+          type="warning"
+          icon="el-icon-delete"
+          size="mini"
+          circle
+          @click="deleteNote()"
+        />
+        <el-button
+          icon="el-icon-d-caret"
+          size="mini"
+          circle
+          @click="jumpToNoteThere()"
+        />
       </div>
-      <div class="note-content" v-html="htmlContent"></div>
-      <div class="note-time">{{ note.createdAt }}</div>
+      <div
+        class="note-content"
+        v-html="htmlContent"
+      />
+      <div class="note-time">
+        {{ note.createdAt }}
+      </div>
     </el-card>
   </div>
 </template>
 
 <script>
-  import { Card, Button } from 'element-ui'
+import { Card, Button } from 'element-ui'
 
-  const yh = {
-    y: 0,
-    h: 0
-  }
+const yh = {
+  y: 0,
+  h: 0
+}
 
-  window.addEventListener('scroll', (w, e) => {
-    yh.y = window.scrollY
-    yh.h = window.innerHeight
-  })
+window.addEventListener('scroll', (w, e) => {
+  yh.y = window.scrollY
+  yh.h = window.innerHeight
+})
 
-  export default {
-    name: 'NoteBlock',
-    components: {
-      'ElCard': Card,
-      'ElButton': Button
+export default {
+  name: 'NoteBlock',
+  components: {
+    'ElCard': Card,
+    'ElButton': Button
+  },
+  props: {
+    htmlContent: {
+      type: String,
+      default: ''
     },
-    props: {
-      htmlContent: {
-        type: String,
-        default: ''
-      },
-      note: {
-        type: Object,
-        required: true
+    note: {
+      type: Object,
+      required: true
+    }
+  },
+  data() {
+    return {
+      yh,
+      visible: false
+    }
+  },
+  computed: {
+    highlightWidth() {
+      const minusVal = this.note.axisY - yh.y
+      const width = { width: 0 }
+      if (this.note.axisY === 0 && yh.y === 0) {
+        width.width = '100%'
       }
-    },
-    computed: {
-      highlightWidth() {
-        const minusVal = this.note.axisY - yh.y
-        const width = { width: 0 }
-        if (this.note.axisY === 0 && yh.y === 0) {
-          width.width = '100%'
-        }
-        if (this.note.axisY < yh.h && this.note.axisY - yh.y > 0) {
-          const per = ((this.note.axisY - yh.y)  / this.note.axisY) * 100
-          width.width = `${per}%`
-        } else if (minusVal > 0 && minusVal < yh.h) {
-          const per = (minusVal / yh.h) * 100
-          width.width = `${per}%`
-        }
-        return width
-      },
-      cardStyle() {
-        return {
-
-        }
-      },
-      isInViewport() {
-        const {axisY} = this.note
-        return axisY >= yh.y && axisY <= yh.y + yh.h
-      },
-    },
-    methods: {
-      jumpToNoteThere(){
-        window.scrollTo(window.scrollX, this.note.axisY)
-      },
-      deleteNote() {
-        this.$emit('deleteTrigger', this.note.key)
+      if (this.note.axisY < yh.h && this.note.axisY - yh.y > 0) {
+        const per = ((this.note.axisY - yh.y)  / this.note.axisY) * 100
+        width.width = `${per}%`
+      } else if (minusVal > 0 && minusVal < yh.h) {
+        const per = (minusVal / yh.h) * 100
+        width.width = `${per}%`
       }
+      return width
     },
-    data() {
+    cardStyle() {
       return {
-        yh,
-        visible: false
+
       }
+    },
+    isInViewport() {
+      const {axisY} = this.note
+      return axisY >= yh.y && axisY <= yh.y + yh.h
+    },
+  },
+  methods: {
+    jumpToNoteThere(){
+      window.scrollTo(window.scrollX, this.note.axisY)
+    },
+    deleteNote() {
+      this.$emit('deleteTrigger', this.note.key)
     }
   }
+}
 </script>
 
 <style scoped lang="less">

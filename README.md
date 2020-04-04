@@ -10,10 +10,10 @@
  6. markdown可用，你可以使用markdwon样式制作笔记，也可以将照片或地址链接拖动到编辑区域。
 
  ## TODO
--[ ] 导出笔记
--[ ] 所有笔记节点的树形显示
--[ ] 支持SPA页面
--[ ] 手动设定URL处理方法
+- [ ] 导出笔记
+- [ ] 所有笔记节点的树形显示
+- [X] 支持SPA页面
+- [ ] 手动设定URL处理方法
 
 ## 基于
 1. 使用[vue-chrome-extension-boilerplate](https://github.com/mubaidr/vue-chrome-extension-boilerplate)为模版创建

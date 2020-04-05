@@ -17,6 +17,7 @@ function exportCfgFunction (env, argv) {
     context: path.resolve(__dirname, './src'),
     entry: {
       options: './options/index.js',
+      center: './center/index.js',
       popup: './popup/index.js',
       background: './background/index.js',
       contentScripts: './contentScripts/index.js',
@@ -120,6 +121,12 @@ function exportCfgFunction (env, argv) {
         filename: 'popup.html',
         chunks: ['popup'],
       }),
+      new HtmlWebpackPlugin({
+        title: 'Center',
+        template: './index.html',
+        filename: 'center.html',
+        chunks: ['center'],
+      }),
     ],
   }
 
@@ -135,6 +142,7 @@ function exportCfgFunction (env, argv) {
         background: 'background',
         extensionPage: 'popup',
         options: 'options',
+        center: 'center',
       })
     )
   } else {

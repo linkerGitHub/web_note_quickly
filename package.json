@@ -6,10 +6,11 @@
   },
   "dependencies": {
     "bulma-fluent": "^0.3.20",
+    "echarts": "^4.7.0",
     "element-ui": "^2.13.0",
     "less.js": "^3.0.5",
-    "vue": "^2.6.11",
-    "marked": "^0.8.0"
+    "marked": "^0.8.0",
+    "vue": "^2.6.11"
   },
   "description": "一个web页面快速侧边栏笔记chrome插件，a side bar note for web page can be accessed quickly",
   "devDependencies": {
@@ -66,5 +67,5 @@
     "remove-evals": "node scripts/remove-evals.js",
     "zip": "node scripts/build-zip.js"
   },
-  "version": "1.0.2"
+  "version": "1.0.3"
 }

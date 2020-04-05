@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-import './vueDevTool'
+import '../lib/vueDevTool'
 
 import inject from '../lib/inject'
 

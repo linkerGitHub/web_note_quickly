@@ -3,7 +3,9 @@ import cReload from "crx-hotreload"
 
 import commandFunc from './commandFunc'
 
-cReload.run([/^(http:\/\/tmp_show\.idxstudio\.win)(.*)/, /^(http:\/\/cdrfd\.com)(.*)/])
+if (process.env.NODE_ENV === 'development') {
+  cReload.run([/^(http:\/\/tmp_show\.idxstudio\.win)(.*)/, /^(http:\/\/cdrfd\.com)(.*)/])
+}
 
 // receive request from content script, rewrite to its function
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
